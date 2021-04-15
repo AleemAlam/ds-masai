@@ -6,7 +6,7 @@ function runProgram(input) {
     let size = Number(input[row++].trim());
     let matrix = [];
     for (let j = 0; j < size; j++) {
-      matrix.push(input[row++].trim());
+      matrix.push(input[row++].trim().split(""));
     }
     let [hori, verti] = checkSymmetry(matrix, size);
     if (hori && verti) {
@@ -21,23 +21,38 @@ function runProgram(input) {
   }
 }
 function checkSymmetry(matrix, size) {
+  // console.log(matrix);
   let horiAns = true;
-  for (let i = 0; i < Math.floor(size / 2); i++) {
-    if (matrix[i] !== matrix[size - 1 - i]) {
-      horiAns = false;
+  let left = 0;
+  let right = size - 1;
+  while (left < right) {
+    for (let i = 0; i < size; i++) {
+      if (matrix[left][i] != matrix[right][i]) {
+        horiAns = false;
+        break;
+      }
+      left++;
+      right--;
     }
+    if (horiAns == false) break;
   }
   let vertiAns = true;
-  for (let i = 0; i < size; i++) {
-    for (let j = 0; j < Math.floor(matrix[i].length / 2); j++) {
-      if (matrix[i][j] !== matrix[j][matrix[i].length - 1 - i]) {
+  left = 0;
+  right = size - 1;
+  while (left < right) {
+    for (let i = 0; i < size; i++) {
+      if (matrix[i][left] != matrix[i][right]) {
         vertiAns = false;
+        break;
       }
+      left++;
+      right--;
     }
+    if (vertiAns == false) break;
   }
   return [horiAns, vertiAns];
 }
-if (process.env.LOGNAME === "aleem") {
+if (process.env.LOGNAME === "ellualeem") {
   runProgram(`3
   4
   *.*.

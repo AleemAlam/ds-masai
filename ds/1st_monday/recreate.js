@@ -8,7 +8,7 @@ function runProgram(input) {
   }
   console.log(newStr);
 }
-if (process.env.LOGNAME === "aleem") {
+if (process.env.LOGNAME === "ellualeem") {
   runProgram(`a3b2`);
 } else {
   process.stdin.resume();

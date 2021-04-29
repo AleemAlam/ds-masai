@@ -12,7 +12,8 @@ function runProgram(input) {
   }
   console.log(newStr);
 }
-if (process.env.LOGNAME === "aleem") {
+
+if (process.env.LOGNAME === "ellualeem") {
   runProgram(`aaabbbbcc`);
 } else {
   process.stdin.resume();

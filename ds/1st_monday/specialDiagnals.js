@@ -36,12 +36,12 @@ function runProgram(input) {
   console.log(rightDia.join(" "));
   console.log(leftDia.join(" "));
 }
-if (process.env.LOGNAME === "aleem") {
+if (process.env.LOGNAME === "ellualeem") {
   runProgram(`3 3
   1 2 3
   4 5 6
   7 8 9
-  6`);
+  5`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");

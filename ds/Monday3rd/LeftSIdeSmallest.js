@@ -1,22 +1,26 @@
 function runProgram(input) {
   input = input.trim().split("\n");
-  let n = Number(input[0].trim());
-  let numbers = input[1].trim().split(" ").map(Number);
 
-  for (let i = 0; i < n - 1; i++) {
-    for (let j = 0; j < n - i - 1; j++) {
-      if (numbers[j] > numbers[j + 1]) {
-        let temp = numbers[j];
-        numbers[j] = numbers[j + 1];
-        numbers[j + 1] = temp;
-      }
-    }
-  }
-  console.log(numbers.join(" "));
+  const len = +input[0].trim();
+  const arr = input[1].trim().split(" ").map(Number);
+  console.log(nextGreater(arr, len));
 }
+
+const nextGreater = (arr, len) => {
+  const stack = [];
+  const ans = []; //
+  for (let i = 0; i < len; i++) {
+    while (stack.length > 0 && stack[stack.length - 1] >= arr[i]) {
+      stack.pop();
+    }
+    ans.push(stack.length > 0 ? stack[stack.length - 1] : -1);
+    stack.push(arr[i]);
+  }
+  return ans.join(" ");
+};
 if (process.env.LOGNAME === "ellualeem") {
-  runProgram(`5
-  3 5 0 9 8`);
+  runProgram(`8
+  39 27 11 4 24 32 32 1`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");

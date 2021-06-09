@@ -1,22 +1,32 @@
 function runProgram(input) {
   input = input.trim().split("\n");
-  let n = Number(input[0].trim());
-  let numbers = input[1].trim().split(" ").map(Number);
+  const testCase = Number(input[0].trim());
+  for (let i = 1; i <= testCase; i++) {
+    const str = input[i].trim();
+    console.log(powerOfStr(str));
+  }
+}
 
-  for (let i = 0; i < n - 1; i++) {
-    for (let j = 0; j < n - i - 1; j++) {
-      if (numbers[j] > numbers[j + 1]) {
-        let temp = numbers[j];
-        numbers[j] = numbers[j + 1];
-        numbers[j + 1] = temp;
-      }
+const powerOfStr = (str) => {
+  let ans = 1;
+  let temp = 1;
+  for (let i = 0; i < str.length - 1; i++) {
+    if (str[i] == str[i + 1]) {
+      temp++;
+    } else {
+      ans = Math.max(ans, temp);
+      temp = 1;
     }
   }
-  console.log(numbers.join(" "));
-}
+  return Math.max(ans, temp);
+};
+
 if (process.env.LOGNAME === "ellualeem") {
-  runProgram(`5
-  3 5 0 9 8`);
+  runProgram(`4
+  aaaaaa
+  aaabbb
+  asd
+  aabbcc`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");

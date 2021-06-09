@@ -2,35 +2,33 @@ function runProgram(input) {
   input = input.trim().split("\n");
   const testCase = Number(input[0].trim().split(" "));
   let row = 1;
-  for (let j = 1; j <= testCase; j++) {
-    let ans = false;
+  for (let i = 1; i <= testCase; i++) {
     let [len, sum] = input[row++].trim().split(" ").map(Number);
-    let nums = input[row++].trim().split(" ").map(Number);
+    let nums = input[row++]
+      .trim()
+      .split(" ")
+      .map(Number)
+      .sort((a, b) => a - b);
     console.log(pairs(nums, len, sum));
   }
 }
 
 function pairs(nums, len, sum) {
-  let obj = {};
-  for (let i = 0; i < len; i++) {
-    if (!obj[nums[i]]) {
-      obj[nums[i]] = i;
+  let l = 0;
+  let k = len - 1;
+  while (l < k) {
+    if (nums[l] + nums[k] > sum) {
+      k--;
+    } else if (nums[l] + nums[k] < sum) {
+      l++;
     } else {
-      obj[nums[i]] += i;
-    }
-  }
-  // console.log(obj, nums);
-  for (let i = 0; i < len; i++) {
-    let other = sum - nums[i];
-    if (obj[other] && obj[other] != i) {
       return 1;
     }
   }
-
   return -1;
 }
 
-if (process.env.LOGNAME === "aleem") {
+if (process.env.LOGNAME === "ellualeem") {
   runProgram(`10
   3 -9
   -1 3 -1

@@ -3,33 +3,11 @@ function runProgram(input) {
   const [n, k] = input[0].trim().split(" ").map(Number);
   const str = input[1].trim();
   console.log(distinctK(str, n, k));
-
-  const obj2 = [
-    {
-      name: "Aleem",
-      age: 23,
-    },
-    {
-      name: "Aleem",
-      age: 23,
-    },
-    {
-      name: "Aleem",
-      age: 23,
-    },
-  ];
-
-  obj2.forEach((item) => {
-    console.log(item.name.length);
-  });
-  // console.log(Object.keys(obj2).length);
 }
 
 const distinctK = (str, n, k) => {
   let newObj = {};
   let count = 0;
-
-  //abbabbaa k=2
 
   for (let i = 0; i < k; i++) {
     if (newObj[str[i]]) {
@@ -42,18 +20,14 @@ const distinctK = (str, n, k) => {
   if (Object.keys(newObj).length == k) {
     count++;
   }
-  //str = aabcdabbcdc
-  //obj = {a:2, b:1, c:1}
-  for (let j = k; j < n; j++) {
-    // Add new element
 
+  for (let j = k; j < n; j++) {
     if (newObj[str[j]]) {
       newObj[str[j]]++;
     } else {
       newObj[str[j]] = 1;
     }
-    // remove first element
-    newObj[str[j - k]]--; // j = 3, k =3 str[0]=a newObj[a] = 1
+    newObj[str[j - k]]--;
     if (newObj[str[j - k]] == 0) {
       delete newObj[str[j - k]];
     }
@@ -64,7 +38,7 @@ const distinctK = (str, n, k) => {
   return count;
 };
 
-if (process.env.LOGNAME === "ellualeem") {
+if (process.env.LOGNAME === "ellu") {
   runProgram(`11 3
   aabcdabbcdc`);
 } else {

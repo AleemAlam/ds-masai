@@ -15,7 +15,6 @@ const getNewArrSum = (arr, len) => {
     while (xStack.length > 0 && arr[xStack[xStack.length - 1]] <= arr[i]) {
       xStack.pop();
     }
-
     xArr.push(xStack.length > 0 ? xStack[xStack.length - 1] + 1 : -1);
     xStack.push(i);
   }
@@ -34,7 +33,7 @@ const getNewArrSum = (arr, len) => {
   return ans.join(" ");
 };
 
-if (process.env.LOGNAME === "ellualeem") {
+if (process.env.LOGNAME === "ellu") {
   runProgram(`5
   5 4 1 3 2`);
 } else {

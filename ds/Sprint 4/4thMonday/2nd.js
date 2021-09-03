@@ -64,7 +64,7 @@ function nextGreater(arr) {
   console.log(str.trim());
 }
 
-if (process.env.LOGNAME === "ellualeem") {
+if (process.env.LOGNAME === "ellu") {
   runProgram(`1
   5
   5 4 1 3 2`);

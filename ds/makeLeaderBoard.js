@@ -1,10 +1,10 @@
 function runProgram(input) {
   input = input.trim().split("\n");
-  input.shift();
-  let newIn = input.map((item) => {
-    let [name, marks] = item.trim().split(" ");
-    return { name: name, marks: Number(marks) };
-  });
+  let newIn = [];
+  for (let i = 1; i < input.length; i++) {
+    let [name, marks] = input[i].trim().split(" ");
+    newIn.push({ name: name, marks: Number(marks) });
+  }
   for (let i = 0; i < newIn.length; i++) {
     for (let j = i + 1; j < newIn.length; j++) {
       if (newIn[j].marks > newIn[i].marks) {
@@ -32,7 +32,7 @@ function runProgram(input) {
     }
   });
 }
-if (process.env.LOGNAME === "aleem") {
+if (process.env.LOGNAME === "ellu") {
   runProgram(`6
 rancho 45
 chatur 32
